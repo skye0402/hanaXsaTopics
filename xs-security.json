@@ -1,0 +1,30 @@
+{
+	"xsappname": "hanaXsaTopics",
+
+	"scopes": [{
+		"name": "$XSAPPNAME.Display",
+		"description": "display"
+	}],
+
+	"attributes": [{
+		"name": "country",
+		"description": "Country",
+		"valueType": "string"
+	}],
+	"role-templates": [{
+		"name": "Token_Exchange",
+		"description": "UAA",
+		"scope-references": [
+			"uaa.user"
+		]
+	}, {
+		"name": "Viewer",
+		"description": "View all customers",
+		"scope-references": [
+			"$XSAPPNAME.Display"
+		],
+		"attribute-references": [
+			"country"
+		]
+	}]
+}

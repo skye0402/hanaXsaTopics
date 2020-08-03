@@ -1,0 +1,20 @@
+{
+	"welcomeFile": "webapp/index.html",
+	"authenticationMethod": "route",
+	"routes": [{
+		"source": "^/customerodata/(.*)$",
+		"target": "/flight/$1",
+		"destination": "srv_api",
+		"csrfProtection": false,
+		"authenticationType": "xsuaa"
+	},{
+		"source": "/(.*)",
+		"localDir": "resources",
+		"authenticationType": "xsuaa",
+		"replace": {
+			"pathSuffixes": [
+				"index.html"
+			]
+		}
+	}]
+}

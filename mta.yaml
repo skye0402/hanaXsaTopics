@@ -1,0 +1,55 @@
+ID: hanaXsaTopics
+_schema-version: "2.1"
+description: Tutorial project for HANA XSA August 2020
+version: 0.0.1
+modules:
+  - name: hanaXsaTopics-db
+    type: hdb
+    path: db
+    parameters:
+      memory: 32M
+      disk-quota: 32M
+    requires:
+      - name: hanaXsaTopics-db-hdi-container
+  - name: hanaXsaTopics-srv
+    type: nodejs
+    path: srv
+    parameters:
+      memory: 32M
+      disk-quota: 32M
+    provides:
+      - name: srv_api
+        properties:
+          url: ${default-url}
+    requires:
+      - name: hanaXsaTopics-db-hdi-container
+      - name: hanaXsaTopics-uaa
+
+  - name: simpleUi5
+    type: html5
+    path: simpleUi5
+    parameters:
+      memory: 32M
+      disk-quota: 32MB
+    requires:
+      - name: srv_api
+        group: destinations
+        properties:
+          name: srv_api
+          url: '~{url}'
+          forwardAuthToken: true
+      - name: hanaXsaTopics-uaa
+
+resources:
+  - name: hanaXsaTopics-db-hdi-container
+    type: com.sap.xs.hdi-container
+    properties:
+      hdi-container-name: ${service-name}
+  - name: hanaXsaTopics-uaa
+    type: com.sap.xs.uaa-space
+    parameters:
+      path: xs-security.json
+      service: xsuaa
+      config:
+        xsappname: hanaXsaTopics
+        tenant-mode: dedicated
