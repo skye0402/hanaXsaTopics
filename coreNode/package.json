@@ -1,0 +1,28 @@
+{
+	"dependencies": {
+		"@sap/xsenv": "^3.0.0",
+		"@sap/xssec": "^2.1.17",
+		"@sap/logging": "^4.0.2",
+		"@sap/hdbext":"^6.2.2",
+		"sap-hdbext-promisfied": "^2.202007.1",
+		"express": "^4.17.1",
+		"passport": "^0.4.1"
+	},
+	"description": "XSA blog series main node module",
+	"devDependencies": {
+		"jest": "^23.6.0",
+		"jest-junit": "^5.2.0"
+	},
+	"files": [],
+	"main": "server.js",
+	"name": "coreNode",
+	"scripts": {
+		"test": "node node_modules/jest/bin/jest --config jest.json",
+		"test-coverage": "node node_modules/jest/bin/jest --coverage --config jest.json",
+		"start": "node server.js"
+	},
+	"engines": {
+		"node": "8.x"
+	},
+	"version": "1.0.0"
+}

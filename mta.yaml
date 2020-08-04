@@ -38,13 +38,34 @@ modules:
           name: srv_api
           url: '~{url}'
           forwardAuthToken: true
+      - name: coreNode_api
+        group: destinations
+        properties:
+          name: coreNode_api
+          url: '~{url}'
+          forwardAuthToken: true    
       - name: hanaXsaTopics-uaa
 
+  - name: coreNode
+    type: nodejs
+    path: coreNode
+    parameters:
+      memory: 32M
+      disk-quota: 32M
+    provides:
+     - name: coreNode_api
+       properties:
+          url: ${default-url}
+    requires:
+      - name: hanaXsaTopics-uaa
+      - name: hanaXsaTopics-db-hdi-container
+      
 resources:
   - name: hanaXsaTopics-db-hdi-container
     type: com.sap.xs.hdi-container
     properties:
       hdi-container-name: ${service-name}
+      
   - name: hanaXsaTopics-uaa
     type: com.sap.xs.uaa-space
     parameters:
