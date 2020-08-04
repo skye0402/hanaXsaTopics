@@ -1,6 +1,6 @@
 {
 	"name": "hanaXsaTopics-srv",
-	"description": "Generated from ../package.json, do not change!",
+	"description": "CDS - Services package.json",
 	"version": "1.0.0",
 	"dependencies": {
 		"@sap/cds": "3.21.1",
