@@ -25,6 +25,8 @@ module.exports = function () {
 						res.type('application/json').status(200).send(results);
 					}
 				});
+		} else {
+			res.type('text/plain').status(200).send(`Not authorized, user ${req.user.id}.`);
 		}
 	});
 	return app;
