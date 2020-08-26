@@ -25,15 +25,6 @@ sap.ui.define([
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
-			
-			// Set OData Model 
-			this.getModel("flightData").attachEventOnce("metadataFailed", function (oEvent) {
-				/*eslint-disable no-alert */
-				alert(
-					"Request to the OData remote service failed."
-				);
-				/*eslint-enable no-alert */
-			});
 		}
 	});
 });

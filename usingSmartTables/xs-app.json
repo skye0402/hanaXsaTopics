@@ -1,34 +1,5 @@
 {
 	"welcomeFile": "webapp/index.html",
-	"authenticationMethod": "route",
-	"routes": [{
-		"source": "^/webapp/customerodata/(.*)$",
-		"target": "v2/flight/$1",
-		"destination": "srv_api",
-		"csrfProtection": false,
-		"authenticationType": "xsuaa"
-	}, {
-		"source": "^/access/(.*)$",
-		"target": "/$1",
-		"destination": "coreNode_api",
-		"csrfProtection": false,
-		"authenticationType": "xsuaa"
-	},
-	{
-		"source": "^/sap/bc/lrep(.*)$",
-		"target": "/sap/bc/lrep$1",
-		"destination": "coreNode_api",
-		"csrfProtection": false,
-		"authenticationType": "xsuaa"
-	},
-	{
-		"source": "/(.*)",
-		"localDir": "resources",
-		"authenticationType": "xsuaa",
-		"replace": {
-			"pathSuffixes": [
-				"index.html"
-			]
-		}
-	}]
+	"authenticationMethod": "none",
+	"routes": []
 }
