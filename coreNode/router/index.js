@@ -12,4 +12,5 @@ module.exports = (app) => {
 		}
 	});
 	app.use('/tutorial/', require('./routes/tutorial')()); // Do something for our blog series
+	app.use('/sap/bc/lrep', require('./routes/variantManagement')()); // Variant management
 };

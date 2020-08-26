@@ -12,9 +12,17 @@
 		"sourceTemplate": {
 			"id": "hanatemplates.basicSAPUI5ApplicationProject",
 			"version": "0.0.0"
+		},
+		"dataSources": {
+			"flightDataOData": {
+				"uri": "customerodata/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -35,7 +43,6 @@
 			"sap_bluecrystal"
 		]
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "usingSmartTables.usingSmartTables.view.aSimpleSmartTable",
@@ -63,12 +70,25 @@
 				"settings": {
 					"bundleName": "usingSmartTables.usingSmartTables.i18n.i18n"
 				}
+			},
+			"flightData": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"operationMode": "Server"
+				},
+				"dataSource": "flightDataOData"
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -79,11 +99,15 @@
 				"controlAggregation": "pages",
 				"controlId": "idAppControl"
 			},
-			"routes": [{
-				"name": "RouteView1",
-				"pattern": "RouteView1",
-				"target": ["TargetView1"]
-			}],
+			"routes": [
+				{
+					"name": "RouteView1",
+					"pattern": "RouteView1",
+					"target": [
+						"TargetView1"
+					]
+				}
+			],
 			"targets": {
 				"TargetView1": {
 					"viewType": "XML",

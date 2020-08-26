@@ -3,7 +3,8 @@
 	"description": "CDS - Services package.json",
 	"version": "1.0.0",
 	"dependencies": {
-		"@sap/cds": "3.21.1",
+		"@sap/cds": "^4.1.7",
+		"@sap/cds-odata-v2-adapter-proxy": "^1.4.42",
 		"express": "^4.17.1",
 		"@sap/hana-client": "^2.5.104",
 		"passport": "^0.4.1",
