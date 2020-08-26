@@ -1,7 +1,7 @@
 ID: hanaXsaTopics
 _schema-version: "2.1"
 description: Tutorial project for HANA XSA August 2020
-version: 0.0.2
+version: 0.0.1
 modules:
   - name: hanaXsaTopics-db
     type: hdb
@@ -11,16 +11,6 @@ modules:
       disk-quota: 32M
     requires:
       - name: hanaXsaTopics-db-hdi-container
-      
-  - name: coreDb
-    type: hdb
-    path: coreDb
-    parameters:
-      memory: 32M
-      disk-quota: 32M
-    requires:
-     - name: hdi_coreDb    
-     
   - name: hanaXsaTopics-srv
     type: nodejs
     path: srv
@@ -55,28 +45,7 @@ modules:
           url: '~{url}'
           forwardAuthToken: true    
       - name: hanaXsaTopics-uaa
-      
-  - name: usingSmartTables
-    type: html5
-    path: usingSmartTables
-    parameters:
-      memory: 32M
-      disk-quota: 32MB
-    requires:
-      - name: srv_api
-        group: destinations
-        properties:
-          name: srv_api
-          url: '~{url}'
-          forwardAuthToken: true
-      - name: coreNode_api
-        group: destinations
-        properties:
-          name: coreNode_api
-          url: '~{url}'
-          forwardAuthToken: true    
-      - name: hanaXsaTopics-uaa
-      
+
   - name: coreNode
     type: nodejs
     path: coreNode
@@ -89,13 +58,16 @@ modules:
           url: ${default-url}
     requires:
       - name: hanaXsaTopics-uaa
-      - name: hdi_coreDb
+      - name: hanaXsaTopics-db-hdi-container
+      
+
+  - name: usingSmartTables
+    type: html5
+    path: usingSmartTables
 
 resources:
   - name: hanaXsaTopics-db-hdi-container
     type: com.sap.xs.hdi-container
-    parameters:
-      service-tags: ["cdsdb"]
     properties:
       hdi-container-name: ${service-name}
       
@@ -107,13 +79,3 @@ resources:
       config:
         xsappname: hanaXsaTopics
         tenant-mode: dedicated
-
-  - name: hdi_coreDb
-    parameters:
-       service-tags: ["coredb"]
-       config:
-          schema: coreDb
-    properties:
-       hdi-container-name_2: ${service-name}
-    type: com.sap.xs.hdi-container
-
