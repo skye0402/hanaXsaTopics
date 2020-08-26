@@ -60,6 +60,14 @@ modules:
       - name: hanaXsaTopics-uaa
       - name: hanaXsaTopics-db-hdi-container
       
+<<<<<<< Upstream, based on origin/master
+=======
+
+  - name: usingSmartTables
+    type: html5
+    path: usingSmartTables
+
+>>>>>>> 76a9b88 Revert "Part 2 completion."
 resources:
   - name: hanaXsaTopics-db-hdi-container
     type: com.sap.xs.hdi-container
