@@ -40,8 +40,6 @@ var hanaOptionsReduced = {
 	password: hanaOptions.hana.password,
 	schema: hanaOptions.hana.schema
 };
-
-console.log(hanaOptions);
 // console.log(hanaOptionsReduced); // Lists all authentication data (just for debugging)
 
 app.use(passport.authenticate('JWT', {
@@ -50,10 +48,10 @@ app.use(passport.authenticate('JWT', {
 	xsHDBConn.middleware(hanaOptionsReduced)
 ); // Add hdb handler
 
-// Setup Routes
+//Setup Routes
 var router = require('./router')(app, server);
 
-// Start the Server
+//Start the Server
 server.on('request', app); // calls the server on a http request
 server.listen(port, function () {
 	console.info(`HTTP Server: ${server.address().port}`);
