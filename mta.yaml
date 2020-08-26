@@ -60,11 +60,6 @@ modules:
       - name: hanaXsaTopics-uaa
       - name: hanaXsaTopics-db-hdi-container
       
-
-  - name: usingSmartTables
-    type: html5
-    path: usingSmartTables
-
 resources:
   - name: hanaXsaTopics-db-hdi-container
     type: com.sap.xs.hdi-container
