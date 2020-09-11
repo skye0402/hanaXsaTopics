@@ -50,19 +50,23 @@ app.use(passport.authenticate('JWT', {
 	xsHDBConn.middleware(hanaOptionsReduced)
 ); // Add hdb handler
 
+<<<<<<< Upstream, based on origin/part2
+//Setup Routes
+=======
 app.use(cookieParser());
 // set up the cookie for the session
 app.use(cookieSession({
-	name: 'session', // name of the cookie
-	secret: 'That\'s my secret :-)', // key to encode session
-	maxAge: 24 * 60 * 60 * 1000, // cookie's lifespan
-	sameSite: 'lax', // controls when cookies are sent
-	path: '/', // explicitly set this for security purposes
-	secure: process.env.NODE_ENV === 'production', // cookie only sent on HTTPS
-	httpOnly: true // cookie is not available to JavaScript (client)
+  name: 'session',                              // name of the cookie
+  secret: 'That\'s my secret :-)',              // key to encode session
+  maxAge: 24 * 60 * 60 * 1000,                  // cookie's lifespan
+  sameSite: 'lax',                              // controls when cookies are sent
+  path: '/',                                    // explicitly set this for security purposes
+  secure: process.env.NODE_ENV === 'production',// cookie only sent on HTTPS
+  httpOnly: true                                // cookie is not available to JavaScript (client)
 }));
 
-//Setup Routes
+// Setup Routes
+>>>>>>> 399b4b0 Added CSRF token to lrep (and array check)
 var router = require('./router')(app, server);
 
 //Start the Server
