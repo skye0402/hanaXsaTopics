@@ -5,6 +5,8 @@
 		"@sap/logging": "^4.0.2",
 		"@sap/hdbext":"^6.2.2",
 		"sap-hdbext-promisfied": "^2.202007.1",
+		"cookie-parser":"^1.4.5",
+		"cookie-session":"^1.4.0",
 		"express": "^4.17.1",
 		"passport": "^0.4.1"
 	},
